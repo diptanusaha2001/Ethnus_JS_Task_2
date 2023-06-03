@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Navigation</title>
+  <style>
+    .page {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="page1" class="page">
+    <h1>Page 1</h1>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div id="page2" class="page">
+    <h1>Page 2</h1>
+    <button onclick="previousPage()">Previous</button>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div id="page3" class="page">
+    <h1>Page 3</h1>
+    <button onclick="previousPage()">Previous</button>
+  </div>
+
+  <script>
+    var currentPage = 1;
+    showPage(currentPage);
+
+    function showPage(pageNumber) {
+      var pages = document.getElementsByClassName("page");
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+      }
+      document.getElementById("page" + pageNumber).style.display = "block";
+    }
+
+    function nextPage() {
+      if (currentPage < 3) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    }
+
+    function previousPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    }
+  </script>
+</body>
+</html>
